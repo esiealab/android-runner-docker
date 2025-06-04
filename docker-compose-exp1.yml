@@ -1,0 +1,17 @@
+services:
+  app:
+    image: android-runner-esiealab:latest
+    container_name: android-runner-esiealab-exp2
+    privileged: true
+    environment: # To change the ADB_PATH, e.g. if you use windows, uncomment and set the path to your ADB server
+      - ADB_PATH=adb -H host.docker.internal -P 5037
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - ./devices.json:/app/devices.json
+      - ./adb_keys:/root/.android
+      - ./experiment:/exp
+    command: /exp/config_web.json
+
+# ADAPT, change in this file:
+#   Volumes to point to your devices.json and the folder of your experiment
+#   Command to point to your config.json (folder is according to the volume mounted)

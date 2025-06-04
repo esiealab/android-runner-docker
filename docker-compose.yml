@@ -1,0 +1,30 @@
+services:
+  app:
+    image: android-runner-esiealab:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args: 
+        - ANDROID_RUNNER_GIT_REPO=https://github.com/esiealab/android-runner.git
+        - ANDROID_COMMANDLINE_TOOLS_FILE_LINK=https://dl.google.com/android/repository/commandlinetools-linux-9123335_latest.zip  
+    container_name: android-runner-esiealab
+    privileged: true
+    stdin_open: true
+    tty: true
+    environment: # To change the ADB_PATH, e.g. if you use windows, uncomment and set the path to your ADB server
+      - ADB_PATH=adb -H host.docker.internal -P 5037
+    volumes:
+      - /dev/bus/usb:/dev/bus/usb
+      - ./devices.json:/app/devices.json
+      - ./adb_keys:/root/.android
+      - ./experiment:/exp
+    command: /exp/config_web.json
+
+
+# USE: 
+# docker compose build
+# docker compose up 
+
+# ADAPT, change in this file:
+#   Volumes to point to your devices.json and the folder of your experiment
+#   Command to point to your config.json (folder is according to the volume mounted)
