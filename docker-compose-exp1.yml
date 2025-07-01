@@ -4,7 +4,8 @@ services:
     container_name: android-runner-esiealab-exp2
     privileged: true
     environment: # To change the ADB_PATH, e.g. if you use windows, uncomment and set the path to your ADB server
-      - ADB_PATH=adb -H host.docker.internal -P 5037
+      #- ADB_PATH=adb -H host.docker.internal -P 5037
+      - ADB_PATH=adb
     volumes:
       - /dev/bus/usb:/dev/bus/usb
       - ./devices.json:/app/devices.json
