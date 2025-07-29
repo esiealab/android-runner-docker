@@ -35,8 +35,7 @@ RUN echo '#!/bin/bash' > ${ANDROID_SDK_FOLDER}/monkeyrunner-java8 && \
 
 RUN echo '--- Installing Android Runner' && \
     git clone ${ANDROID_RUNNER_GIT_REPO} . && \
-    pip install -r requirements.txt
-    pip install python-telegram-bot
+    pip install -r requirements.txt && pip install python-telegram-bot
 
 ENTRYPOINT ["python3", "__main__.py"]
 CMD ["./examples/android/config.json"]
