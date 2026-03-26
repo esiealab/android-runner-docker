@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN echo '--- Installing Android Runner' && \
     git clone ${ANDROID_RUNNER_GIT_REPO} . && \
-    pip install -r requirements.txt
+    pip install -r requirements.txt && pip install python-telegram-bot
 
 ENTRYPOINT ["python3", "__main__.py"]
 CMD ["./examples/android/config.json"]
