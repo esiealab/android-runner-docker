@@ -22,7 +22,7 @@ RUN echo '--- Installing Android SDK' && \
     rm -f /tmp/commandlinetools-linux.zip && \
     mv ${ANDROID_SDK_FOLDER}/cmdline-tools/cmdline-tools/ ${ANDROID_SDK_FOLDER}/cmdline-tools/latest/ && \
     cd ${ANDROID_SDK_FOLDER}/cmdline-tools/latest/bin && \
-    yes | ./sdkmanager "tools" "build-tools;30.0.0" "platform-tools"
+    yes | ./sdkmanager "build-tools;30.0.0" "platform-tools"
 
 ENV PATH="$PATH:${ANDROID_SDK_FOLDER}/platform-tools:${ANDROID_SDK_FOLDER}/cmdline-tools/bin"
 
